@@ -108,10 +108,8 @@ def rename_objc_stubs() -> None:
             print(f"Failed to analyze function 0x{procedure_address:X} ({procedure_name}): {exc}")
             continue
 
-        new_procedure_name = f"{selector}()"
-        print(f"Renaming stub at 0x{procedure_address:X} ({procedure_name}) to {new_procedure_name}")
         renamed_functions += 1
-        doc.setNameAtAddress(procedure_address, new_procedure_name)
+        doc.setNameAtAddress(procedure_address, selector)
 
     print(f"Renamed {renamed_functions} stubs")
 
